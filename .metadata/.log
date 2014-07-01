@@ -12338,3 +12338,252 @@ Binding(CTRL+SHIFT+\,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.wst.sse.ui.structuredTextEditorScope,,,system)
+!SESSION 2014-07-01 17:39:55.097 -----------------------------------------------
+eclipse.buildId=M20130204-1200
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product adtproduct
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product adtproduct
+
+!ENTRY org.eclipse.equinox.app 0 0 2014-07-01 17:39:56.367
+!MESSAGE Product adtproduct could not be found.
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-07-01 17:40:33.079
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2014-07-01 17:40:37.467
+!MESSAGE Unable to create class 'org.eclipse.ui.internal.e4.compatibility.CompatibilityView' from bundle '244'
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: java.lang.NullPointerException
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:63)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:861)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:841)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.inject(InjectorImpl.java:113)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:321)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:242)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:161)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:102)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:71)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:53)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:141)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:894)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:629)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$6.run(PartRenderingEngine.java:520)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:505)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ElementReferenceRenderer.createWidget(ElementReferenceRenderer.java:74)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:894)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:629)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:731)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:702)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:696)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:681)
+	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.showTab(StackRenderer.java:1115)
+	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.postProcess(LazyStackRenderer.java:98)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:645)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:731)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:702)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:696)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:681)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:641)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:731)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:702)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:696)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:681)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer.processContents(WBWRenderer.java:644)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:641)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:731)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:702)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:696)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:681)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:987)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:942)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:86)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:588)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:543)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
+Caused by: java.lang.NullPointerException
+	at org.eclipse.ui.internal.ViewIntroAdapterPart.init(ViewIntroAdapterPart.java:199)
+	at org.eclipse.ui.internal.ViewReference.initialize(ViewReference.java:144)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:301)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	... 68 more
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-07-01 17:40:37.934
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-07-01 17:40:37.937
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\anh.tuan.nguyen'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-07-01 17:40:49.383
+!MESSAGE JavaBuilder handling ImageBuilderInternalException while building: appcompat_v7
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:816)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:184)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Could not delete '/appcompat_v7/bin/classes/android'.
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1977)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:184)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$attr.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$bool.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$color.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$dimen.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$drawable.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$layout.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$string.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$style.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$styleable.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2014-07-01 17:40:49.385
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete '/appcompat_v7/bin/classes/android'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1977)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:803)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:184)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:726)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$attr.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$bool.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$color.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$dimen.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$drawable.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$layout.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$string.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$style.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$styleable.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R.class.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support.
+Contains: Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2014-07-01 17:40:49.385
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$attr.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$bool.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$color.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$dimen.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$drawable.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$layout.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$string.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$style.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.385
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R$styleable.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.386
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat\R.class.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.386
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7\appcompat.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.386
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support\v7.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.386
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android\support.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2014-07-01 17:40:49.386
+!MESSAGE Could not delete: D:\Android_Training\android\appcompat_v7\bin\classes\android.
+
+!ENTRY org.eclipse.ui 2 2 2014-07-01 17:46:35.597
+!MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)
