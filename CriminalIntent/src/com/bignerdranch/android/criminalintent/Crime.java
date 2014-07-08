@@ -12,8 +12,12 @@ public class Crime {
 	public Crime(){
 		//Create unique identifier
 		mId = UUID.randomUUID();
-		mDate = new Date();
+		mDate = new Date();		
 	}
+	 @Override
+	 public String toString() {
+	    return mTitle;
+	 }
 
 	public Date getDate() {
 		return mDate;

@@ -1,0 +1,269 @@
+package com.uux.api.datamanager;
+
+import java.io.Console;
+import java.util.Date;
+import java.util.List;
+
+import android.util.Log;
+
+import com.android.volley.Request;
+import com.android.volley.Request.Priority;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.uux.api.data.CMSPromo;
+import com.uux.api.data.Channel;
+import com.uux.api.data.Poster;
+import com.uux.api.data.PosterDetail;
+import com.uux.api.datamanager.ContentDataManagerDelegate.DetailDataManagerDelegate;
+import com.uux.api.utils.APIConstant;
+import com.uux.api.utils.APIConstant.ContentType;
+import com.uux.api.utils.APIUtil;
+import com.uux.api.utils.GsonRequest;
+
+public class ContentDataManager extends AbstractDataManager{
+	private ContentDataManagerDelegate mDelegate;
+	private DetailDataManagerDelegate mDetailDelegate;
+	
+	// private constructor
+	public ContentDataManager() {
+		super();
+	}
+	
+	public void setDetailDelegate(DetailDataManagerDelegate detailDelegate) {
+		this.mDetailDelegate = detailDelegate;
+	}
+
+	public void setDelegate(ContentDataManagerDelegate delegate) {
+		this.mDelegate = delegate;
+	}
+	
+	public ContentDataManagerDelegate getDelegate() {
+		return this.mDelegate;
+	}
+	
+	public void loadEGPData(List<Date> timeSlots, final List<String> tags) {
+		
+		String baseUrl = WebCMSDataManager.getInstance().getAPIBaseUrl() + "schedules?livechannelpids=%1&starttime=%2&endtime=%3&img=" + APIConstant.PARAM_IMG;
+		
+		StringBuffer channelIds = new StringBuffer();
+		for (Channel channel : WebCMSDataManager.getInstance().mChannels) {
+			channelIds.append(channel.pid).append(",");
+		}
+		
+		for (int i = 0; i < timeSlots.size(); i++) {
+			final Date time = timeSlots.get(i);
+			long startTime = time.getTime()/1000;
+			long endTime = startTime + (60 * 60) - 1; 
+			
+			final String url = baseUrl
+							.replace("%1", channelIds)
+							.replace("%2", String.valueOf(startTime))
+							.replace("%3", String.valueOf(endTime));
+			final String TAG = tags.get(i);
+			
+			GsonRequest<Poster[]> req = new GsonRequest<Poster[]>(Request.Method.GET, url, Poster[].class, "Content", 
+				new Response.Listener<Poster[]>() {
+
+					@Override
+					public void onResponse(Poster[] posters) {
+						
+						//OnNow
+						if ( TAG.equals(tags.get(0)) ) {
+							for (Poster poster : posters) {
+								poster.isOnNow = true;
+							}
+						}
+						if ( null != mDelegate ) {
+							mDelegate.finishLoadData(posters, TAG);
+						}
+					}
+				}, 
+				new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						Log.e("loadEGPData", arg0.getMessage());
+						
+						if ( null != mDelegate ) {
+							mDelegate.failLoadData(TAG);	
+						}
+					}
+					
+				}
+			);
+			
+			//OnNow carousel
+			if ( i == 0 ) {
+				req.setPriority(Priority.HIGH);
+			}
+			
+			// add the request object to the queue to be executed
+			this.addToRequestQueue(req, TAG);
+		}
+	}
+
+	public void loadChannelDetail(String channelId) {
+		final String url = WebCMSDataManager.getInstance().getAPIBaseUrl() + "Content/" + channelId;
+		
+		GsonRequest<Channel[]> req = new GsonRequest<Channel[]>(Request.Method.GET, url, Channel[].class, "Content", 
+			new Response.Listener<Channel[]>() {
+
+				@Override
+				public void onResponse(Channel[] channels) {
+					if (channels.length > 0) {
+						if ( null != mDetailDelegate ) {
+							mDetailDelegate.finishLoadChannelDetail(true, channels[0]);
+						}
+					}
+					else if ( null != mDetailDelegate ) {
+						mDetailDelegate.finishLoadChannelDetail(false, null);
+					}
+					
+				}
+			}, 
+			new Response.ErrorListener() {
+
+				@Override
+				public void onErrorResponse(VolleyError arg0) {
+					Log.e("loadChannelDetail", arg0.getMessage());
+					if ( null != mDetailDelegate ) {
+						mDetailDelegate.finishLoadChannelDetail(false, null);
+					}
+				}
+				
+			}
+		);
+			
+		// add the request object to the queue to be executed
+		this.addToRequestQueue(req, String.valueOf(APIConstant.REQUEST_TAG.CONTENT_CHANNEL_DETAIL));
+		
+	}
+	
+	public void loadPosterDetail(Poster poster) {
+		
+		String pid = poster.pid;
+		ContentType contentType = APIUtil.getContentType(poster.pid);
+		if ( contentType == ContentType.BROADCAST || contentType == ContentType.BROADCAST_SERIES ) {
+			pid = poster.liveProgramPid;
+		}
+		
+		final String url = WebCMSDataManager.getInstance().getAPIBaseUrl() + "Content/%pid?limit=%limit&img=%img"
+				.replace("%pid", pid)
+				.replace("%limit", APIConstant.LIMIT)
+				.replace("%img", APIConstant.PARAM_IMG);
+		
+		GsonRequest<Poster[]> req = new GsonRequest<Poster[]>(Request.Method.GET, url, Poster[].class, "Content", 
+			new Response.Listener<Poster[]>() {
+
+				@Override
+				public void onResponse(Poster[] posters) {
+					if ( posters.length > 0 ) {
+						loadGenreActorDirectorWriterProducers(posters[0]);
+					}
+					else if ( null != mDetailDelegate ) {
+						mDetailDelegate.finishLoadPosterDetail(false, null);
+					}
+				}
+			}, 
+			new Response.ErrorListener() {
+
+				@Override
+				public void onErrorResponse(VolleyError arg0) {
+					Log.e("loadDetailOfPoster", arg0.getMessage());
+					if ( null != mDetailDelegate ) {
+						mDetailDelegate.finishLoadPosterDetail(false, null);
+					}
+					
+				}
+				
+			}
+		);
+			
+		// add the request object to the queue to be executed
+		this.addToRequestQueue(req, String.valueOf(APIConstant.REQUEST_TAG.CONTENT_POSTER_DETAIL));
+	}
+	
+	private void loadGenreActorDirectorWriterProducers(final Poster poster) {
+		
+		String[] pDetails = APIUtil.concatAll(poster.genrePids, poster.actorPids, poster.directorPids, poster.writerPids, poster.producerPids);
+		StringBuffer pids = new StringBuffer();
+		for ( String pid : pDetails ) {
+			pids.append(pid).append(",");
+		}
+		
+		if (pids.length() > 0) {
+			pids = pids.replace(pids.length()-1, pids.length(), "");
+			final String url = WebCMSDataManager.getInstance().getAPIBaseUrl() + "Contents?pids=%pids&limit=%limit"
+					.replace("%pids", pids)
+					.replace("%limit", APIConstant.LIMIT);
+			
+			GsonRequest<PosterDetail[]> req = new GsonRequest<PosterDetail[]>(Request.Method.GET, url, PosterDetail[].class, "Content", 
+				new Response.Listener<PosterDetail[]>() {
+
+					@Override
+					public void onResponse(PosterDetail[] posterDetails) {
+						Poster resultPoster = poster;
+						resultPoster.mPosterDetails = posterDetails;
+						
+						mDetailDelegate.finishLoadPosterDetail(true, resultPoster);
+					}
+				}, 
+				new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						Log.e("loadPosterDetails", arg0.getMessage());
+						if ( null != mDetailDelegate ) {
+							mDetailDelegate.finishLoadPosterDetail(false, null);							
+						}
+					}
+					
+				}
+			);
+					
+			// add the request object to the queue to be executed
+			this.addToRequestQueue(req, String.valueOf(APIConstant.REQUEST_TAG.CONTENT_POSTER_DETAIL));
+		}
+		else if ( null != mDetailDelegate ) {
+			mDetailDelegate.finishLoadPosterDetail(true, poster);
+		}
+	}
+
+	public void loadPosterOfPromos(final CMSPromo[] promos) {
+		StringBuffer pids = new StringBuffer();
+		for ( CMSPromo promo : promos ) {
+			pids.append(promo.pid).append(",");
+		}
+		
+		if (pids.length() > 0) {
+			pids = pids.replace(pids.length()-1, pids.length(), "");
+			final String url = WebCMSDataManager.getInstance().getAPIBaseUrl() + "Contents?pids=%pids&limit=%limit"
+					.replace("%pids", pids)
+					.replace("%limit", APIConstant.LIMIT);
+			Log.d("tuananh", url);
+			
+			GsonRequest<Poster[]> req = new GsonRequest<Poster[]>(Request.Method.GET, url, Poster[].class, "Content", 
+				new Response.Listener<Poster[]>() {
+
+					@Override
+					public void onResponse(Poster[] posters) {
+						for (int i = 0; i < posters.length; i++) {
+							promos[i].poster = posters[i];
+						}
+					}
+				}, 
+				new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						Log.e("loadPosterDetails", arg0.getMessage());
+					}
+					
+				}
+			);
+					
+			// add the request object to the queue to be executed
+			this.addToRequestQueue(req, String.valueOf(APIConstant.REQUEST_TAG.CONTENT_POSTER_DETAIL));
+		}
+	}
+}
